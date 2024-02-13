@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Introducción a JavaScript</h1>
+    <button onclick="suma()">Sumar</button>
+    <button onclick="login()">Login</button>
+    <button onclick="compruebaPar()">Es Par</button>
+    <button onclick="calculaIndiceMasaCorporal()">Es Par</button>
+    <button onclick="media()">Media</button>
+    <script>    
+        function suma(){
+            alert("Bienvenido a mi página");           
+            let n1=prompt("Dime un número");
+            if (isNaN(n1)){
+                alert("NO es un número");
+                return;
+            } 
+            let n2=prompt("Dime otro");
+            if (isNaN(n2)){
+                    alert("NO es un número");
+                    return;
+            }                      
+            let suma=Number(n1)+Number(n2);
+            alert("La suma de " + n1 + " mas " + n2 + " es: " + suma);               
+        }   
+        function login(){
+            let usuario=prompt("Introduzca usuario");
+            let contrasena=prompt("Introduzca contraseña");
+            if ( usuario == "admin" && contrasena=="1234") {
+                alert("Bienvenido a mi página");
+            }
+            else {
+                alert("Acceso denegado");
+            }
+        }
+
+        function esPar(n){
+            if ( n%2==0) {
+                return true;
+            } else {
+                return false
+            }
+        }
+        function compruebaPar(){
+            let numero
+            do {
+                numero=prompt("Dime el número");
+            } while (isNaN(numero) );
+
+            if (esPar(numero)) {
+                alert( "Es par");
+            } else {
+                alert( "Es impar");
+            }
+        }
+
+        function imc(m,h){
+            let indice=m/Math.pow(h,2);/** es es m partido de h al cuadrado ***/
+            return indice;
+            
+        }
+        function calculaIndiceMasaCorporal(){
+            let masa=prompt("Dime tu peso ( kg )");
+            let altura=prompt("Dime tu altura( m )");
+            alert( imc(masa,altura) );
+        }
+
+        function media(){
+            let n1=prompt("Dime un número");
+            let n2=prompt("Dime un otro");
+            let n3=prompt("Dime el último");
+            media = ( Number(n1) + Number(n2) +Number(n3))/3;
+            alert( "La media es " + media);
+        }
+
+    </script>
+</body>
+</html>

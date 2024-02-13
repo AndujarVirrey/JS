@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #display { border: 2px solid red;}
+    </style>
+</head>
+<body>
+    <button onclick="calculaPrecioConIva()">Precio con IVA</button>
+    <h2>Cálculo del iva de un producto</h2>
+    Precio sin Iva <input value="100" type="number" id="precio-sin-iva">
+    Tipo <input type="number" max="3" min="1" value="3" id="tipo">
+    <button onclick="calculaPrecioConIvaFormulario()">Calculo del Precio Con precioIva</button>
+    <p id="display">
+
+    </p>
+    <script> 
+        function calculaPrecioConIvaFormulario(){
+            let precioSinIva = document.getElementById("precio-sin-iva");
+            let precioSinIvaValor = precioSinIva.value;
+            let tipoValor = document.getElementById("tipo").value;
+            let precioIva =  precioConIva( precioSinIvaValor,tipoValor);
+            let display = document.getElementById("display");
+            display.innerHTML = "El precio con iva es " + precioIva;
+
+
+        }   
+        function calculaPrecioConIva(){
+            let precio = prompt("Dime el precio sin iva");
+            let tipo = prompt("Dime el tipo ( 1/2/3)");
+            let precioIva =  precioConIva( precio,tipo);
+            alert("Precio Con IVA " + precioIva);
+            if ( puedePagarEfectivo( precioIva)) {
+                alert("Puede pagar en Efectivo");
+            } else {
+                alert("NO Puede pagar en Efectivo");
+            }
+        }  
+        /**************************************
+         *  tipo 1:5%
+         * tipo 2 10%
+         * tipo 3 21%
+         * ************************************/     
+        function precioConIva( precioSinIva,tipo){
+            if ( tipo==1) { /*5%*/
+                return precioSinIva*1.05;
+            }
+            if ( tipo==2) { /*10%*/
+                return precioSinIva*1.10;
+            }
+            if ( tipo==3) { /* 21% */
+                return precioSinIva*1.21;
+            }
+
+            
+        }   
+        function puedePagarEfectivo( cantidad){
+            if(cantidad<2000) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+    </script>
+</body>
+</html>
